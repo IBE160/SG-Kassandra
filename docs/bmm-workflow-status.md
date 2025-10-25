@@ -12,8 +12,8 @@ WORKFLOW_PATH: greenfield-level-3.yaml
 ## Current State
 
 CURRENT_PHASE: 3
-CURRENT_WORKFLOW: ux-spec - Complete
-CURRENT_AGENT: ux-expert
+CURRENT_WORKFLOW: create-architecture - Complete
+CURRENT_AGENT: architect
 PHASE_1_COMPLETE: true
 PHASE_2_COMPLETE: true
 PHASE_3_COMPLETE: false
@@ -21,8 +21,8 @@ PHASE_4_COMPLETE: false
 
 ## Next Action
 
-NEXT_ACTION: Create System-wide architecture document
-NEXT_COMMAND: create-architecture
+NEXT_ACTION: Validate PRD + UX + architecture cohesion before implementation
+NEXT_COMMAND: solutioning-gate-check
 NEXT_AGENT: architect
 
 ## Story Backlog
@@ -42,7 +42,7 @@ NEXT_AGENT: architect
   - Story 2.6: Basic Weather API Integration
 - Epic 3: Real-time Communication & Manager Overview
   - Story 3.1: Booking Confirmation Notifications
-  - Story 3.2: Booking Change/Cancellation Notifications
+  -. Story 3.2: Booking Change/Cancellation Notifications
   - Story 3.3: Manager Operational Dashboard
   - Story 3.4: Real-time Updates for Booking Status
   - Story 3.5: Manager Initiated Schedule Adjustments

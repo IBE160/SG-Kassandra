@@ -2,135 +2,125 @@
 
 ## Executive Summary
 
-This document outlines the architecture for the KiteOps project. The architecture is a modern, decoupled web application with a Next.js frontend and a FastAPI (Python) backend. This approach was chosen to leverage the strengths of both frameworks: Next.js for a high-performance, server-rendered React frontend, and FastAPI for a high-performance Python backend, which is ideal for the planned AI and data-intensive features. The architecture is designed to be robust, scalable, and maintainable.
+This document outlines the architecture for KiteOps, an intelligent, rule-based booking and management platform. The architecture is designed to be scalable, maintainable, and provide a consistent foundation for AI agent-based development. It is based on a modern, hybrid approach, leveraging a Next.js frontend, a FastAPI (Python) backend, Supabase for the database and authentication, and a set of best-in-class libraries for state management, forms, and UI components.
 
 ## Project Initialization
 
-The project will be set up as a monorepo to manage the frontend and backend codebases together.
+The first implementation story should be to initialize the project using the following command:
 
 ```bash
-# 1. Create the project directory
-mkdir kiteops && cd kiteops
-
-# 2. Initialize the Next.js frontend
-npx create-next-app@latest frontend --typescript --tailwind --eslint
-
-# 3. Set up the FastAPI backend
-mkdir backend && cd backend
-python3 -m venv venv
-source venv/bin/activate
-pip install fastapi uvicorn[standard] python-dotenv supabase
+npx create-next-app@latest kiteops --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
 ```
+
+This command establishes the base architecture with the following decisions:
+*   **Framework:** Next.js (App Router)
+*   **Language:** TypeScript
+*   **Styling:** Tailwind CSS
+*   **Linting:** ESLint
+*   **Project Structure:** Code will be in a `src/` directory.
 
 ## Decision Summary
 
 | Category | Decision | Version | Affects Epics | Rationale |
-|---|---|---|---|---|
-| **Frontend Framework** | Next.js | v14+ | 1, 2, 3 | For a high-performance, server-rendered React frontend. |
-| **Backend Framework** | FastAPI (Python) | v0.100+ | 1, 2, 3 | For a high-performance Python backend, ideal for AI and data-intensive features. |
-| **API Pattern** | RESTful API | OpenAPI 3.0 | 1, 2, 3 | A well-understood standard for communication between the frontend and backend. |
-| **Data Persistence** | Supabase (PostgreSQL) | Client v2.76.1 | 1, 2, 3 | Provides a robust relational database, authentication, and real-time capabilities. |
-| **Authentication** | Supabase Auth | Client v2.76.1 | 1 | Seamlessly integrates with the Supabase database. |
-| **Real-time Solution** | Supabase Realtime | Client v2.76.1 | 2, 3 | Built into Supabase for easy implementation of real-time features. |
-| **Deployment Target** | Vercel | N/A | 1, 2, 3 | The optimal platform for deploying Next.js applications and FastAPI serverless functions. |
+| --- | --- | --- | --- | --- |
+| Frontend Framework | Next.js | 14.0 | All | Full-stack framework for React, with SSR/SSG, and a rich ecosystem. |
+| Backend Framework | FastAPI | 0.120.0 | All | High-performance Python framework for building APIs. |
+| Language | TypeScript | 5.3 | All | Enforces type safety, improving code quality and maintainability. |
+| Styling | Tailwind CSS | 3.4 | All | Utility-first CSS framework for rapid and consistent UI development. |
+| Database | Supabase | `supabase-js v2.75.1` | All | PostgreSQL-based platform with auth, storage, and real-time capabilities. |
+| Authentication | Supabase Auth | `supabase-js v2.75.1` | 1, 2, 3 | Tightly integrated with the database, simplifying user management. |
+| Real-time | Supabase Realtime | `supabase-js v2.75.1` | 2, 3 | Provides real-time data synchronization for a live, interactive experience. |
+| State Management | TanStack Query | 5.90.5 | 2, 3 | For managing server state, caching, and data synchronization. |
+| State Management | Zustand | 5.0.8 | 2, 3 | For simple, lightweight client-side state management. |
+| Form Management | React Hook Form | 7.65.0 | 1, 2, 3 | Performant, flexible, and extensible forms with easy-to-use validation. |
+| Form Validation | Zod | 4.1.12 | 1, 2, 3 | TypeScript-first schema validation with static type inference. |
+| Email Service | Resend | 6.2.2 | 3 | Modern, developer-friendly email service for transactional emails. |
+| UI Components | Shadcn/ui | N/A | 1, 2, 3 | A collection of re-usable, accessible, and customizable UI components. |
 
-## Project Structure (Monorepo)
+## Project Structure
 
 ```
 kiteops/
 ├── frontend/
 │   ├── src/
 │   │   ├── app/
+│   │   │   ├── (auth)/
+│   │   │   │   ├── login/
+│   │   │   │   └── register/
+│   │   │   ├── (main)/
+│   │   │   │   ├── dashboard/
+│   │   │   │   ├── bookings/
+│   │   │   │   └── schedule/
+│   │   │   ├── api/
+│   │   │   └── layout.tsx
 │   │   ├── components/
+│   │   │   ├── ui/ (Shadcn/ui components)
+│   │   │   └── shared/
 │   │   ├── lib/
+│   │   │   ├── supabase.ts
+│   │   │   ├── utils.ts
+│   │   │   └── types/
+│   │   ├── styles/
+│   │   │   └── globals.css
 │   │   └── ...
-│   └── ...
+│   ├── public/
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── next.config.mjs
 └── backend/
     ├── app/
     │   ├── __init__.py
     │   ├── main.py
-    │   ├── routers/
+    │   ├── core/
+    │   ├── models/
+    │   ├── schemas/
     │   └── services/
-    ├── tests/
-    └── requirements.txt
+    ├── requirements.txt
+    └── .env
 ```
 
-## Data Architecture
+## Technology Stack Details
 
-Data models will be defined using Supabase's PostgreSQL database.
+### Core Technologies
+*   **Frontend Framework:** Next.js 14.0
+*   **Backend Framework:** FastAPI 0.120.0
+*   **React:** 18.2
+*   **TypeScript:** 5.3
+*   **Tailwind CSS:** 3.4
+*   **Supabase (JS Client):** 2.75.1
+*   **TanStack Query:** 5.90.5
+*   **Zustand:** 5.0.8
+*   **React Hook Form:** 7.65.0
+*   **Zod:** 4.1.12
+*   **Resend:** 6.2.2
+*   **Shadcn/ui:** N/A
 
-- **`profiles`**
-  - `id` (uuid, primary key, foreign key to `auth.users.id`)
-  - `email` (text, unique)
-  - `full_name` (text)
-  - `role` (enum: `customer`, `instructor`, `manager`)
+## Implementation Patterns
 
-- **`lessons`**
-  - `id` (uuid, primary key)
-  - `name` (text)
-  - `description` (text)
-  - `skill_level` (enum: `beginner`, `intermediate`, `advanced`)
+These patterns ensure consistent implementation across all AI agents:
 
-- **`bookings`**
-  - `id` (uuid, primary key)
-  - `lesson_id` (uuid, foreign key to `lessons.id`)
-  - `customer_id` (uuid, foreign key to `profiles.id`)
-  - `instructor_id` (uuid, foreign key to `profiles.id`)
-  - `start_time` (timestamp with time zone)
-  - `end_time` (timestamp with time zone)
-  - `status` (enum: `confirmed`, `cancelled`, `completed`)
+### Naming Conventions
+*   **Components:** PascalCase (e.g., `UserCard.tsx`)
+*   **Files:** kebab-case (e.g., `user-card.tsx`)
+*   **API Routes:** kebab-case (e.g., `/api/user-profile`)
+*   **Database Tables:** snake_case (e.g., `user_profiles`)
+*   **Database Columns:** snake_case (e.g., `user_id`)
 
-- **`availability`**
-  - `id` (uuid, primary key)
-  - `instructor_id` (uuid, foreign key to `profiles.id`)
-  - `start_time` (timestamp with time zone)
-  - `end_time` (timestamp with time zone)
+### Code Organization
+*   **Components:** Organize by feature in the `src/components` directory.
+*   **Shared Logic:** Place in the `src/lib` directory.
+*   **Types:** Define in `src/lib/types`.
 
-## Intelligent Scheduling Engine
+### Error Handling
+*   Use a centralized error handling function.
+*   Return consistent error responses from the API.
 
-The core of the intelligent scheduling engine will be implemented in the FastAPI backend. It will use a weighted decision model to suggest the optimal instructor for a given lesson booking.
+### Logging
+*   Use a structured logging format.
+*   Log all critical errors and events.
 
-**Parameters:**
-- **Skill Match (50% weight):** Matches the student's skill level with the instructor's expertise.
-- **Weather Suitability (30% weight):** Considers `min_wind_speed`, `max_wind_speed`, `preferred_directions`, and `allow_precipitation` from an external weather API (OpenWeatherMap). The weight of this parameter is dynamic and decreases for bookings further in the future.
-- **Instructor Load Balancing (20% weight):** Considers the instructor's current workload to ensure an even distribution of lessons.
+---
 
-## API Contracts (RESTful API)
-
-The API will be defined using FastAPI, which automatically generates OpenAPI 3.0 documentation.
-
-**Example Endpoints:**
-- `POST /api/bookings`: Create a new booking.
-- `GET /api/lessons`: Get a list of available lessons.
-- `GET /api/users/me`: Get the profile of the currently authenticated user.
-
-## External API Integrations
-
-- **OpenWeatherMap API:** To get real-time weather forecasts for the scheduling engine.
-- **SendGrid API:** For sending transactional emails (e.g., booking confirmations).
-
-## Development Environment
-
-### Prerequisites
-
-- Node.js (v18 or later)
-- Python (v3.9 or later)
-- npm or yarn
-- pip
-- A Supabase project
-
-### Environment Variables
-
-Create a `.env` file in the `backend` directory and a `.env.local` file in the `frontend` directory.
-
-```
-# backend/.env
-SUPABASE_URL="your-supabase-url"
-SUPABASE_SERVICE_KEY="your-supabase-service-key"
-OPENWEATHERMAP_API_KEY="your-openweathermap-api-key"
-SENDGRID_API_KEY="your-sendgrid-api-key"
-
-# frontend/.env.local
-NEXT_PUBLIC_SUPABASE_URL="your-supabase-url"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
-```
+_Generated by BMAD Decision Architecture Workflow v1.0_
+_Date: 2025-10-25_
+_For: BIP_
