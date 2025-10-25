@@ -481,6 +481,10 @@ This document outlines proposed UI/UX solutions for the key user flows in the `i
             *   Displays current weather conditions at the primary school location (wind speed, direction, temperature, precipitation).
             *   Visually indicates if current conditions are within or outside defined operational thresholds (e.g., green/red indicator).
             *   Link to "Weather Settings" (Flow 10) for more details or adjustments.
+        *   **"Current Weather Status" Card:**
+            *   Displays current weather conditions at the primary school location (wind speed, direction, temperature, precipitation).
+            *   Visually indicates if current conditions are within or outside defined operational thresholds (e.g., green/red indicator).
+            *   Link to "Weather Settings" (Flow 10) for more details or adjustments.
     *   **UX Considerations:**
         *   **Data Visualization:** Use charts and graphs effectively to convey information quickly.
         *   **Actionable Insights:** Metrics should lead to potential actions or further investigation.
