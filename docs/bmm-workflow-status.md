@@ -12,8 +12,8 @@ WORKFLOW_PATH: greenfield-level-3.yaml
 ## Current State
 
 CURRENT_PHASE: 3
-CURRENT_WORKFLOW: create-architecture - Complete
-CURRENT_AGENT: architect
+CURRENT_WORKFLOW: ux-spec - Complete
+CURRENT_AGENT: ux-expert
 PHASE_1_COMPLETE: true
 PHASE_2_COMPLETE: true
 PHASE_3_COMPLETE: false
@@ -21,9 +21,9 @@ PHASE_4_COMPLETE: false
 
 ## Next Action
 
-NEXT_ACTION: Perform solutioning gate check
-NEXT_COMMAND: solutioning-gate-check
-NEXT_AGENT: pm
+NEXT_ACTION: Create System-wide architecture document
+NEXT_COMMAND: create-architecture
+NEXT_AGENT: architect
 
 ## Story Backlog
 
@@ -53,5 +53,5 @@ NEXT_AGENT: pm
 
 ---
 
-_Last Updated: 2025-10-25_
+LAST_UPDATED: 2025-10-25
 _Status Version: 2.1_
