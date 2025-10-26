@@ -1,6 +1,6 @@
 # Story 1.4: Supabase Database & Auth Setup
 
-Status: Ready
+Status: Completed
 
 ## Story
 
@@ -20,14 +20,14 @@ so that the backend infrastructure supports user registration, login, role manag
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 (AC: 1, 7)
-  - [ ] Create a new Supabase project.
-  - [ ] Configure environment variables for Supabase.
-- [ ] Task 2 (AC: 2, 3)
-  - [ ] Write SQL scripts to create database tables and RLS policies.
-- [ ] Task 3 (AC: 4, 5, 6)
-  - [ ] Install Supabase client library.
-  - [ ] Implement Supabase authentication and data access functions.
+- [x] Task 1 (AC: 1, 7)
+  - [x] Create a new Supabase project.
+  - [x] Configure environment variables for Supabase.
+- [x] Task 2 (AC: 2, 3)
+  - [x] Write SQL scripts to create database tables and RLS policies.
+- [x] Task 3 (AC: 4, 5, 6)
+  - [x] Install Supabase client library.
+  - [x] Implement Supabase authentication and data access functions.
 
 ## Dev Notes
 

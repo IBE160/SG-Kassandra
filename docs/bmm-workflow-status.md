@@ -28,7 +28,6 @@ NEXT_AGENT: dev
 ## Story Backlog
 
 - Epic 1: Core Platform Foundation & User Management
-  - Story 1.4: Supabase Database & Auth Setup
   - Story 1.5: User Password Management
   - Story 1.6: Manager User Management Interface
 - Epic 2: Intelligent Booking & Scheduling Engine (MVP)
@@ -55,6 +54,7 @@ NEXT_AGENT: dev
 - Story 1.1: User Registration & Login
 - Story 1.2: Role-Based Access Control (RBAC)
 - Story 1.3: Basic User Profile Management
+- Story 1.4: Supabase Database & Auth Setup
 
 
 
