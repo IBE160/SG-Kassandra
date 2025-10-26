@@ -28,7 +28,6 @@ NEXT_AGENT: dev
 ## Story Backlog
 
 - Epic 1: Core Platform Foundation & User Management
-  - Story 1.0: Project Repository & CI/CD Setup
   - Story 1.1: User Registration & Login
   - Story 1.2: Role-Based Access Control (RBAC)
   - Story 1.3: Basic User Profile Management
@@ -54,6 +53,8 @@ NEXT_AGENT: dev
   - Story 3.6: Manager Mass Communication Tool
 
 ## Completed Stories
+
+- Story 1.0: Project Repository & CI/CD Setup
 
 
 

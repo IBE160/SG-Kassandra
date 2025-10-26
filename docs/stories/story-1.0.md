@@ -1,6 +1,6 @@
 # Story 1.0: Project Repository & CI/CD Setup
 
-Status: Ready
+Status: Completed
 
 ## Story
 
@@ -17,18 +17,18 @@ so that I can have a robust development environment.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 (AC: 1)
-  - [ ] Initialize Next.js project using the specified command.
-- [ ] Task 2 (AC: 2)
-  - [ ] Initialize Git repository.
-  - [ ] Add all project files to the repository.
-  - [ ] Make the initial commit.
-- [ ] Task 3 (AC: 3)
-  - [ ] Create a basic CI/CD pipeline configuration file (e.g., for GitHub Actions).
-  - [ ] The pipeline should run on push to the main branch.
-  - [ ] The pipeline should install dependencies and run the linter.
-- [ ] Task 4 (AC: 4)
-  - [ ] Identify and install any additional development dependencies.
+- [x] Task 1 (AC: 1)
+  - [x] Initialize Next.js project using the specified command.
+- [x] Task 2 (AC: 2)
+  - [x] Initialize Git repository.
+  - [x] Add all project files to the repository.
+  - [x] Make the initial commit.
+- [x] Task 3 (AC: 3)
+  - [x] Create a basic CI/CD pipeline configuration file (e.g., for GitHub Actions).
+  - [x] The pipeline should run on push to the main branch.
+  - [x] The pipeline should install dependencies and run the linter.
+- [x] Task 4 (AC: 4)
+  - [x] Identify and install any additional development dependencies.
 
 ## Dev Notes
 
