@@ -8,3 +8,24 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+export async function getUserRole() {
+  const { data: { session } } = await supabase.auth.getSession();
+
+  if (!session) {
+    return null;
+  }
+
+  const { data: userRoleData, error: userRoleError } = await supabase
+    .from('user_roles')
+    .select('role_id, roles(name)')
+    .eq('user_id', session.user.id)
+    .single();
+
+  if (userRoleError) {
+    console.error('Error fetching user role:', userRoleError.message);
+    return null;
+  }
+
+  return userRoleData.roles.name;
+}

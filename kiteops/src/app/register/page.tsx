@@ -18,14 +18,37 @@ export default function RegisterPage() {
       return;
     }
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
 
     if (error) {
       setMessage(error.message);
-    } else {
+    } else if (data.user) {
+      // Assign default 'customer' role
+      const { data: roleData, error: roleError } = await supabase
+        .from('roles')
+        .select('id')
+        .eq('name', 'customer')
+        .single();
+
+      if (roleError) {
+        console.error('Error fetching customer role:', roleError.message);
+        setMessage('Registration successful, but failed to assign default role.');
+        return;
+      }
+
+      const { error: userRoleError } = await supabase
+        .from('user_roles')
+        .insert([{ user_id: data.user.id, role_id: roleData.id }]);
+
+      if (userRoleError) {
+        console.error('Error assigning default role:', userRoleError.message);
+        setMessage('Registration successful, but failed to assign default role.');
+        return;
+      }
+
       setMessage("Registration successful! Please check your email for a confirmation link.");
     }
   };

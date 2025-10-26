@@ -1,6 +1,6 @@
 # Story 1.2: Role-Based Access Control (RBAC)
 
-Status: Ready
+Status: Completed
 
 ## Story
 
@@ -21,16 +21,16 @@ so that the system maintains security and provides a tailored user experience.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 (AC: 1, 2, 7)
-  - [ ] Create a `roles` table in the database.
-  - [ ] Create a `user_roles` table to link users and roles.
-  - [ ] Assign a default role on user registration.
-- [ ] Task 2 (AC: 3)
-  - [ ] Create a user management interface for managers.
-  - [ ] Implement functionality to change user roles.
-- [ ] Task 3 (AC: 4, 5, 6)
-  - [ ] Implement middleware or route protection to restrict access based on roles.
-  - [ ] Dynamically render UI components based on user roles.
+- [x] Task 1 (AC: 1, 2, 7)
+  - [x] Create a `roles` table in the database.
+  - [x] Create a `user_roles` table to link users and roles.
+  - [x] Assign a default role on user registration.
+- [x] Task 2 (AC: 3)
+  - [x] Create a user management interface for managers.
+  - [x] Implement functionality to change user roles.
+- [x] Task 3 (AC: 4, 5, 6)
+  - [x] Implement middleware or route protection to restrict access based on roles.
+  - [x] Dynamically render UI components based on user roles.
 
 ## Dev Notes
 
