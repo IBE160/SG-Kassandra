@@ -2,16 +2,23 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/utils/supabase";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [fullName, setFullName] = useState<string | null>(null);
   const [contactNumber, setContactNumber] = useState<string | null>(null);
   const [email, setEmail] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    const message = searchParams.get('message');
+    if (message === 'password_updated') {
+      setSuccessMessage('Your password has been updated successfully!');
+    }
+
     async function getProfile() {
       setLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
@@ -41,7 +48,7 @@ export default function ProfilePage() {
     }
 
     getProfile();
-  }, [router]);
+  }, [router, searchParams]);
 
   if (loading) {
     return <div>Loading profile...</div>;
@@ -55,6 +62,15 @@ export default function ProfilePage() {
             Your Profile
           </h2>
         </div>
+        {successMessage && (
+          <div className="rounded-md bg-green-50 p-4">
+            <div className="flex">
+              <div className="ml-3">
+                <p className="text-sm font-medium text-green-800">{successMessage}</p>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
