@@ -1,6 +1,6 @@
 # Story 1.1: User Registration & Login
 
-Status: Ready
+Status: Completed
 
 ## Story
 
@@ -21,21 +21,21 @@ so that I can access the platform's features relevant to my role.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 (AC: 1, 2, 3)
-  - [ ] Create the registration form with email and password fields.
-  - [ ] Implement password strength validation.
-- [ ] Task 2 (AC: 4)
-  - [ ] Set up an email service (e.g., Resend).
-  - [ ] Create and send a confirmation email upon registration.
-- [ ] Task 3 (AC: 5, 6)
-  - [ ] Create the login form.
-  - [ ] Implement authentication logic.
-  - [ ] Display appropriate feedback messages.
-- [ ] Task 4 (AC: 7)
-  - [ ] Create a "Forgot Password" page.
-  - [ ] Implement password reset logic.
-- [ ] Task 5 (AC: 8)
-  - [ ] Ensure all user data is handled securely.
+- [x] Task 1 (AC: 1, 2, 3)
+  - [x] Create the registration form with email and password fields.
+  - [x] Implement password strength validation.
+- [x] Task 2 (AC: 4)
+  - [x] Set up an email service (e.g., Resend).
+  - [x] Create and send a confirmation email upon registration.
+- [x] Task 3 (AC: 5, 6)
+  - [x] Create the login form.
+  - [x] Implement authentication logic.
+  - [x] Display appropriate feedback messages.
+- [x] Task 4 (AC: 7)
+  - [x] Create a "Forgot Password" page.
+  - [x] Implement password reset logic.
+- [x] Task 5 (AC: 8)
+  - [x] Ensure all user data is handled securely.
 
 ## Dev Notes
 

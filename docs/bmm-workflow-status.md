@@ -28,7 +28,6 @@ NEXT_AGENT: dev
 ## Story Backlog
 
 - Epic 1: Core Platform Foundation & User Management
-  - Story 1.1: User Registration & Login
   - Story 1.2: Role-Based Access Control (RBAC)
   - Story 1.3: Basic User Profile Management
   - Story 1.4: Supabase Database & Auth Setup
@@ -55,6 +54,7 @@ NEXT_AGENT: dev
 ## Completed Stories
 
 - Story 1.0: Project Repository & CI/CD Setup
+- Story 1.1: User Registration & Login
 
 
 
