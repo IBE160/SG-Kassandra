@@ -1,6 +1,6 @@
 # Story 1.3: Basic User Profile Management
 
-Status: Ready
+Status: Completed
 
 ## Story
 
@@ -20,15 +20,15 @@ so that my personal details are accurate and up-to-date within the system.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 (AC: 1, 2)
-  - [ ] Create a profile page.
-  - [ ] Fetch and display user profile data.
-- [ ] Task 2 (AC: 3, 4, 5)
-  - [ ] Create an edit profile form.
-  - [ ] Implement form validation.
-  - [ ] Update profile information in the database.
-- [ ] Task 3 (AC: 6)
-  - [ ] Implement email change verification flow.
+- [x] Task 1 (AC: 1, 2)
+  - [x] Create a profile page.
+  - [x] Fetch and display user profile data.
+- [x] Task 2 (AC: 3, 4, 5)
+  - [x] Create an edit profile form.
+  - [x] Implement form validation.
+  - [x] Update profile information in the database.
+- [x] Task 3 (AC: 6)
+  - [x] Implement email change verification flow.
 
 ## Dev Notes
 
