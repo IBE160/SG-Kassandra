@@ -1,4 +1,3 @@
-
 # generated: 2025-10-26
 # project: ibe160
 # project_key: ibe160
@@ -38,25 +37,25 @@ story_location: "{project-root}/docs/stories"
 
 development_status:
   epic-1: backlog
-  1-0-project-repository-&-ci/cd-setup: backlog
-  1-1-user-registration-&-login: backlog
-  1-2-role-based-access-control-(rbac): backlog
-  1-3-basic-user-profile-management: backlog
-  1-4-supabase-database-&-auth-setup: backlog
-  1-5-user-password-management: backlog
-  1-6-manager-user-management-interface: backlog
+  1-0-project-repository-&-ci/cd-setup: drafted
+  1-1-user-registration-&-login: drafted
+  1-2-role-based-access-control-(rbac): drafted
+  1-3-basic-user-profile-management: drafted
+  1-4-supabase-database-&-auth-setup: drafted
+  1-5-user-password-management: drafted
+  1-6-manager-user-management-interface: drafted
   epic-1-retrospective: optional
   epic-2: backlog
-  2-1-instructor-availability-management: backlog
-  2-2-customer-lesson-search-&-filtering: backlog
-  2-3-customer-lesson-booking-confirmation: backlog
-  2-4-rule-based-intelligent-slot-suggestion: backlog
-  2-5-customer-my-bookings-view: backlog
+  2-1-instructor-availability-management: drafted
+  2-2-customer-lesson-search-&-filtering: drafted
+  2-3-customer-lesson-booking-confirmation: drafted
+  2-4-rule-based-intelligent-slot-suggestion: drafted
+  2-5-customer-my-bookings-view: drafted
   epic-2-retrospective: optional
   epic-3: backlog
-  3-1-booking-confirmation-notifications: backlog
-  3-2-booking-change/cancellation-notifications: backlog
-  3-3-manager-operational-dashboard: backlog
-  3-4-real-time-updates-for-booking-status: backlog
-  3-5-manager-initiated-schedule-adjustments: backlog
+  3-1-booking-confirmation-notifications: drafted
+  3-2-booking-change/cancellation-notifications: drafted
+  3-3-manager-operational-dashboard: drafted
+  3-4-real-time-updates-for-booking-status: drafted
+  3-5-manager-initiated-schedule-adjustments: drafted
   epic-3-retrospective: optional
