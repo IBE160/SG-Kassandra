@@ -1,6 +1,6 @@
 # Story 3.5: Manager Initiated Schedule Adjustments
 
-Status: Draft
+Status: Ready
 
 ## Story
 

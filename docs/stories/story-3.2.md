@@ -1,6 +1,6 @@
 # Story 3.2: Booking Change/Cancellation Notifications
 
-Status: Draft
+Status: Ready
 
 ## Story
 

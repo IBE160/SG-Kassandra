@@ -1,6 +1,6 @@
 # Story 3.4: Real-time Updates for Booking Status
 
-Status: Draft
+Status: Ready
 
 ## Story
 

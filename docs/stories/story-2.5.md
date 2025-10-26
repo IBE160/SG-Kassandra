@@ -1,6 +1,6 @@
 # Story 2.5: Customer My Bookings View
 
-Status: Draft
+Status: Ready
 
 ## Story
 

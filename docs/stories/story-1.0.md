@@ -1,6 +1,6 @@
 # Story 1.0: Project Repository & CI/CD Setup
 
-Status: Draft
+Status: Ready
 
 ## Story
 

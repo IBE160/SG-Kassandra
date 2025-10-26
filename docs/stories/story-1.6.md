@@ -1,6 +1,6 @@
 # Story 1.6: Manager User Management Interface
 
-Status: Draft
+Status: Ready
 
 ## Story
 

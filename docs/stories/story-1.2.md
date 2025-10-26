@@ -1,6 +1,6 @@
 # Story 1.2: Role-Based Access Control (RBAC)
 
-Status: Draft
+Status: Ready
 
 ## Story
 

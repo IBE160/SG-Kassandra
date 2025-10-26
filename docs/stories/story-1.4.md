@@ -1,6 +1,6 @@
 # Story 1.4: Supabase Database & Auth Setup
 
-Status: Draft
+Status: Ready
 
 ## Story
 

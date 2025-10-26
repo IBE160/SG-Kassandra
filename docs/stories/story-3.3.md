@@ -1,6 +1,6 @@
 # Story 3.3: Manager Operational Dashboard
 
-Status: Draft
+Status: Ready
 
 ## Story
 

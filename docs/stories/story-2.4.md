@@ -1,6 +1,6 @@
 # Story 2.4: Rule-Based Intelligent Slot Suggestion
 
-Status: Draft
+Status: Ready
 
 ## Story
 

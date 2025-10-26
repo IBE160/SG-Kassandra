@@ -1,6 +1,6 @@
 # Story 3.1: Booking Confirmation Notifications
 
-Status: Draft
+Status: Ready
 
 ## Story
 

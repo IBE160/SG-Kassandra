@@ -1,6 +1,6 @@
 # Story 2.3: Customer Lesson Booking Confirmation
 
-Status: Draft
+Status: Ready
 
 ## Story
 

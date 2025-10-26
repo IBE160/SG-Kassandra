@@ -1,6 +1,6 @@
 # Story 1.5: User Password Management
 
-Status: Draft
+Status: Ready
 
 ## Story
 

@@ -1,6 +1,6 @@
 # Story 1.1: User Registration & Login
 
-Status: Draft
+Status: Ready
 
 ## Story
 

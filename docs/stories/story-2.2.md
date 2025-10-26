@@ -1,6 +1,6 @@
 # Story 2.2: Customer Lesson Search & Filtering
 
-Status: Draft
+Status: Ready
 
 ## Story
 

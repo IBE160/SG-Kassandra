@@ -1,6 +1,6 @@
 # Story 2.1: Instructor Availability Management
 
-Status: Draft
+Status: Ready
 
 ## Story
 

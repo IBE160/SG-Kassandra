@@ -1,6 +1,6 @@
 # Story 1.3: Basic User Profile Management
 
-Status: Draft
+Status: Ready
 
 ## Story
 
