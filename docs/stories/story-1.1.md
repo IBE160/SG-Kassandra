@@ -58,4 +58,7 @@ so that I can access the platform's features relevant to my role.
 
 ### Completion Notes List
 
+- Story 1.1: User Registration & Login is complete. All acceptance criteria have been met and tasks are finished.
+
+
 ### File List

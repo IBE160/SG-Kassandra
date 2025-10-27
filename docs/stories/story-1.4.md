@@ -39,3 +39,8 @@ so that the backend infrastructure supports user registration, login, role manag
 
 ## Dev Agent Record
 
+### Completion Notes List
+
+- Story 1.4: Supabase Database & Auth Setup is complete. All acceptance criteria have been met and tasks are finished.
+
+

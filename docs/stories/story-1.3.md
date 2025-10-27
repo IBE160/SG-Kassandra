@@ -40,3 +40,8 @@ so that my personal details are accurate and up-to-date within the system.
 
 ## Dev Agent Record
 
+### Completion Notes List
+
+- Story 1.3: Basic User Profile Management is complete. All acceptance criteria have been met and tasks are finished.
+
+

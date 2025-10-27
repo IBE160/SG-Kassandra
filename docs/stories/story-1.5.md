@@ -35,3 +35,8 @@ so that I can maintain the security of my account.
 
 ## Dev Agent Record
 
+### Completion Notes List
+
+- Story 1.5: User Password Management is complete. All acceptance criteria have been met and tasks are finished.
+
+
