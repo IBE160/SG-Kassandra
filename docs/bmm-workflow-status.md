@@ -12,7 +12,7 @@ WORKFLOW_PATH: greenfield-level-3.yaml
 ## Current State
 
 CURRENT_PHASE: Analyze and Planning
-CURRENT_WORKFLOW: analyst
+CURRENT_WORKFLOW: research - Complete
 CURRENT_AGENT: analyst
 PHASE_1_COMPLETE: false
 PHASE_2_COMPLETE: false
@@ -21,8 +21,8 @@ PHASE_4_COMPLETE: false
 
 ## Next Action
 
-NEXT_ACTION: research
-NEXT_COMMAND: \*research
+NEXT_ACTION: Produce Project Brief
+NEXT_COMMAND: *product-brief
 NEXT_AGENT: analyst
 
 ---
