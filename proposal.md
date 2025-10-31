@@ -153,11 +153,13 @@ Create a booking and management platform for kite schools where students can boo
 
 The rule-based scheduling engine operates on a weighted decision model considering three primary factors:
 
-- **Skill Match (50%)** – Aligns student skill levels with Instructor expertise and certifications.
-- **Weather Suitability (30%)** – Analyzes forecast data to select optimal lesson windows.
-- **Instructor Load Balancing (20%)** – Distributes sessions evenly among available instructors.
+- **Skill Match** – Aligns student skill levels with Instructor expertise and certifications.
+- **Weather Suitability** – Analyzes forecast data to select optimal lesson windows.
+- **Instructor Load Balancing** – Distributes sessions evenly among available instructors.
 
 If weather API data is unavailable, KiteOps uses cached forecasts or allows manual Manager override to maintain continuity.
+
+See scheduling logic brainstorming: @docs/fase-1-analysis/brainstorming-session-results-scheduling-logic.md
 
 - Must support GDPR-compliant data handling
 - Must use encryption for all user and payment data
@@ -167,334 +169,46 @@ If weather API data is unavailable, KiteOps uses cached forecasts or allows manu
 
 ## User Flows
 
-### Flow 1: Customer Making a Booking
-
-**Entry Point**: Customer lands on KiteOps homepage
-
-1. **Landing Page**
-
-   - Customer visits the KiteOps homepage
-   - Clicks “Book a Lesson” button
-   - Redirected to the Customer Sign-Up / Login page
-
-2. **Customer Registration & Login**
-
-   - New Customer:
-     - Clicks "Create Account"
-     - Enters name, email, password
-     - Receives verification email and confirms
-     - Redirected to profile setup
-   - Returning Customer:
-     - Enters email and password
-     - Redirected to Customer dashboard
-
-3. **Profile Setup (First-Time Users Only)**
-
-   - Enters personal details:
-     - Name, age, (optional) gender
-     - Skill level: Beginner, Intermediate, Advanced
-     - Experience (years or prior lessons)
-   - Saves profile and continues
-
-4. **Customer Dashboard Access**
-
-   - Lands on dashboard showing:
-     - "Book New Lesson" button prominently
-     - Upcoming lessons (empty for new users)
-     - Messages/announcements
-   - Clicks "Book New Lesson"
-
-5. **Lesson Search**
-
-   - Sets search parameters:
-     - Skill level (Beginner/Intermediate/Advanced)
-     - Lesson type (private/group/refresher)
-     - Duration (hours or days)
-     - Preferred date range (upcoming weeks)
-   - System fetches:
-     - Real-time Instructor availability
-     - Weather/tide forecast for selected window
-   - Displays available time slots and instructors
-
-6. **Instructor & Slot Selection**
-
-   - Reviews Instructor cards with:
-     - Photo, IKO certification, years of experience, languages
-     - Ratings or completed lesson count
-   - Filters/sorts by experience, availability, optimal wind windows
-   - Selects Instructor and time slot
-   - Clicks "Continue to Review"
-
-7. **Booking Review**
-
-   - Sees booking summary:
-     - Instructor, date, time, duration, location
-     - Weather/tide summary for the slot
-     - Total price (if payment enabled)
-   - Confirms policies (cancellation, reschedule)
-   - Clicks "Confirm Booking"
-
-8. **Confirmation & Notifications**
-
-   - Confirmation screen shows reference number and details
-   - Email + SMS confirmation sent automatically
-   - Lesson added to Customer calendar view
-   - Instructor and Manager receive notifications
-   - Option to "Add to Google Calendar" (if enabled)
-
-9. **Post-Booking Dashboard Update**
-
-   - Dashboard card shows upcoming lesson with:
-     - Date/time, location link/map, Instructor info
-     - Buttons: "Reschedule", "Cancel" (per policy)
-   - Notification center displays weather watch section
-
-10. **Rescheduling or Weather-Based Rebooking (Optional Future Feature)**
-
-    - If forecast degrades:
-      - System proposes alternate slots (same Instructor or others)
-      - Customer options:
-        - Accept proposed slot
-        - Choose different Instructor/slot
-        - Cancel for credit (per policy)
-    - Upon selection, all parties notified and calendars updated
-
-11. **Lesson Reminder & Day-of Communication (Optional Future Feature)**
-    - T–24h: automatic reminder via email/SMS
-    - Day-of: real-time "Go/No-Go" check based on weather rules
-    - Instructor may send location or gear notes (e.g., "Meet at Spot B")
-    - Customer opens map and logistics from dashboard
-
-**Exit Point**: Customer logs out or navigates to Upcoming Lessons / My Profile
-
-### Flow 2: Instructor Managing Lessons and Availability
-
-**Entry Point**: Instructor logs in to KiteOps platform
-
-1. **Landing Page**
-
-   - Instructor navigates to KiteOps homepage
-   - Clicks "For Instructors" in navigation
-   - Views overview of Instructor tools, features, and operational benefits
-   - Clicks "Login / Register"
-
-2. **Instructor Registration & Login**
-
-   - New Instructor:
-     - Clicks "Create Instructor Account"
-     - Enters details: name, email, password
-     - Receives verification email → clicks confirmation link
-     - Redirected to Instructor profile setup
-   - Returning Instructor:
-     - Logs in using email and password
-     - Redirected to Instructor dashboard
-
-3. **Instructor Profile Setup (First-Time Only)**
-
-   - Completes professional profile:
-     - Name, photo, certifications, experience level
-     - IKO profile link
-     - Spoken languages and lesson types (private, group, freestyle, foil, etc.)
-     - Availability preferences (days/times)
-   - Saves profile
-   - Redirected to Instructor Dashboard
-
-4. **Instructor Dashboard Access**
-
-   - Dashboard displays:
-     - Summary of today’s and upcoming lessons
-     - "Set Availability" and "Add Lesson" buttons
-     - Quick notifications from Manager or system
-     - Weather summary for the week
-   - Instructor clicks "Set Availability"
-
-5. **Calendar Management**
-
-   - Interactive weekly/monthly calendar view
-   - Instructor can:
-     - Add or modify availability slots (drag & drop or form entry)
-     - Block off personal days or unavailable times
-     - Review confirmed and pending bookings
-   - Color-coded view:
-     - Green = Available
-     - Blue = Confirmed lessons
-     - Grey = Unavailable
-   - Clicks "Save Availability"
-
-6. **Review Upcoming Lessons**
-
-   - Calendar populated with booked lessons
-   - Clicking on a lesson displays:
-     - Student name, skill level, age, gender, experience
-     - Lesson type, duration, and meeting location
-     - Weather forecast summary for that time slot
-   - Instructor can message student directly (e.g., “Please bring your harness”) (Optional feature)
-
-7. **Add or Modify Lessons**
-
-   - Instructor clicks "Add Lesson"
-   - Two options:
-     - **Option A – New Student:**
-       - Enters student details (name, contact, skill level)
-       - Chooses date/time slot
-       - Confirms lesson → system sends invitation to student
-     - **Option B – Existing Student:**
-       - Selects from student list
-       - Adds follow-up or rebooked lesson
-   - System validates weather and availability
-   - Booking confirmation sent to student and Manager
-
-8. **Rebooking or Cancellations**
-
-   - Instructor identifies a booking affected by weather or scheduling conflict
-   - Clicks "Rebook Lesson"
-   - System proposes alternative time slots based on weather and student availability
-   - Instructor confirms new slot → student and Manager automatically notified
-
-9. **Daily Overview**
-
-   - Instructor accesses "Today’s Schedule" view:
-     - List of all lessons for the day with time, student, and location
-     - "View Details" button for student info
-     - Weather alert indicators (e.g., “High wind warning”) (Optional Future Feature)
-   - Option to print or export daily summary (Optional Future Feature)
-
-10. **Messaging & Communication (Optional Future Feature)**
-
-    - From dashboard, Instructor clicks "Messages"
-    - Two options:
-      - **Message Student:** Selects student, composes short note, sends via app/email
-      - **Message Manager:** Sends operational message or schedule update
-    - All communications logged in message history
-
-11. **Performance & Reviews (Optional Future Feature)**
-    - Instructor can view feedback ratings from students
-    - Insights on:
-      - Lesson hours taught
-      - Student satisfaction
-      - Repeat bookings
-    - Encourages continuous improvement and incentives
-
-**Exit Point**: Instructor logs out or navigates to Calendar, Messages, or Dashboard
-
-### Flow 3: Manager Overseeing Operations and Scheduling
-
-**Entry Point**: Manager logs in to KiteOps platform
-
-1. **Landing Page**
-
-   - Manager navigates to the KiteOps homepage
-   - Clicks "For Schools / Managers" in the navigation bar
-   - Views platform benefits: centralized scheduling, weather-aware planning, and automated messaging
-   - Clicks "Login / Register"
-
-2. **Manager Registration & Login**
-
-   - **New Manager:**
-     - Clicks "Create Manager Account"
-     - Enters name, email, password
-     - Receives verification email and confirms
-     - Redirected to Manager Profile Setup
-   - **Returning Manager:**
-     - Logs in using email and password
-     - Redirected directly to the Manager Dashboard
-
-3. **Manager Profile Setup (First-Time Only)**
-
-   - Enters organization details:
-     - School name, contact info, and primary location
-     - Default lesson durations and pricing (if applicable)
-     - Instructor roles and permission settings
-   - Saves configuration
-   - Redirected to Manager Dashboard
-
-4. **Manager Dashboard Access**
-
-   - Dashboard displays:
-     - Operational Overview Card (today’s and week’s lessons)
-     - Instructor Availability Summary
-     - Pending Bookings / Rebooking Alerts
-     - Weather & Wind Summary for the week
-   - Buttons available:
-     - "Add Booking"
-     - "Assign Instructor"
-     - "View Reports"
-     - "Send Message"
-
-5. **Calendar Overview**
-
-   - Switchable Week / Month View
-   - Full visibility of:
-     - All booked lessons (color-coded by Instructor)
-     - Instructor availability blocks
-     - Weather-based alerts and low-wind warnings
-   - Legend:
-     - Blue = Confirmed lesson
-     - Orange = Pending confirmation
-     - Red = Weather risk
-   - Manager clicks on any slot for details
-
-6. **View Lesson Details**
-
-   - Lesson pop-up or side panel displays:
-     - Instructor, student, and lesson type
-     - Time, duration, and location
-     - Current weather forecast
-     - Lesson status (confirmed / pending / rebooked)
-   - Quick actions available:
-     - "Edit Lesson"
-     - "Reassign Instructor"
-     - "Cancel or Rebook"
-     - "Message Student / Instructor"
-
-7. **Add or Modify Bookings**
-
-   - Clicks "Add Booking"
-   - Chooses one of three options:
-     - **New Student:** Adds new Customer profile (name, contact, skill level)
-     - **Existing Student:** Selects returning Customer from database
-     - **Group Lesson:** Adds multiple students under one session
-   - Selects date, duration, and location
-   - Assigns Instructor (manual or auto-suggested by rule-based system)
-   - System validates weather and Instructor schedule
-   - Clicks "Confirm Booking" → notifications sent to all parties
-
-8. **Rebooking Workflow**
-
-   - System automatically flags lessons impacted by bad weather
-   - Manager clicks "View Rebooking Suggestions"
-   - Weather API suggests next best slots based on Instructor and student availability
-   - Manager approves and confirms rebooking
-   - Notifications automatically sent to student and Instructor
-
-9. **Instructor Coordination**
-
-   - Manager navigates to Instructor Overview tab
-   - Views each Instructor’s:
-     - Weekly schedule
-     - Total hours booked
-     - Availability gaps
-   - Can reassign or block specific instructors for operational balance
-   - Clicks "Notify Instructor" to send schedule updates
-
-10. **Communication & Messaging (Optional Future Feature)**
-
-    - From dashboard, clicks "Messages"
-    - Options:
-      - **Broadcast Message:** Sends general announcement to all instructors and students (e.g., weather updates or schedule reminders)
-      - **Direct Message:** Sends targeted messages to individual instructors or customers
-    - All messages logged in history and sent via email + in-app notification
-
-11. **Reporting & Insights (Optional Future Feature)**
-    - Manager clicks "Reports"
-    - Views:
-      - Lesson counts per Instructor
-      - Student attendance
-      - Cancellation rate and weather impact
-      - Revenue summary (if integrated)
-    - Exports data as PDF or CSV
-
-**Exit Point**: Manager logs out or navigates to Calendar, Messages, or Reports
+Detailed userflows: @docs/fase-1-analysis/brainstorming-session-results-user-flows-detailed.md
+Communication: @docs/fase-1-analysis/brainstorming-session-results-communication.md
+
+### 1. Customer User Story Map (MVP - Guest Booking Only)
+
+**Backbone:**
+
+1.  Discover & Start Booking (as Guest)
+2.  Find a Lesson
+3.  Book a Lesson
+4.  Manage Booking (via Email/Separate Page)
+5.  Attend Lesson
+
+### 2. Instructor User Story Map (MVP)
+
+**Backbone:**
+
+1.  Discover & Sign Up
+2.  Set Up Profile
+3.  Instructor Dashboard
+4.  Calendar View
+5.  Manage Availability
+6.  View & Manage Lessons
+7.  Handle Changes (Rebooking/Cancellations)
+8.  Daily Overview
+
+### 3. Manager User Story Map (MVP)
+
+**Backbone:**
+
+1.  Discover & Sign Up
+2.  Kite School Settings
+3.  Manager Dashboard
+4.  Calendar Overview
+5.  Manage Bookings
+6.  Handle Rebooking Workflow
+7.  Instructor Coordination
+8.  View Customers
+9.  Communication
+10. AI Functionality (Nice-to-Have)
 
 ## Technical Specifications
 
@@ -503,6 +217,7 @@ If weather API data is unavailable, KiteOps uses cached forecasts or allows manu
 - **Framework**: Next.js 14+ with App Router for server-side rendering and optimal performance
 - **Language**: TypeScript for type safety and better AI-assisted development
 - **Styling**: Tailwind CSS for rapid, responsive UI development
+- **Calender**: Next.js (with React and interactive calendar libraries such as React Big Calendar or FullCalendar).
 - **Forms**: React Hook Form with Zod validation for robust form handling
 - **Authentication UI**: Supabase Auth UI components + custom styling
 - **Real-time Updates**: Supabase Realtime client for live booking system
@@ -513,10 +228,12 @@ If weather API data is unavailable, KiteOps uses cached forecasts or allows manu
 
 - **Framework**: FastAPI (Python) for high-performance RESTful API development
 - **Language**: Python for AI integration compatibility and rapid development
+- **Calender**: FastAPI (Python)
 - **Database**: Supabase (PostgreSQL) for managed database and real-time capabilities
 - **Authentication**: Supabase Auth for built-in user management, JWT tokens, and email verification
 - **Authorization**: Row Level Security (RLS) policies in Supabase + role-based middleware (Customer/Instructor/Manager roles)
-- **AI Integration**: Gemini API integration (for AI-powered recommendations and optimization)
+- **AI Integration**: Model: Gemini 2.5 pro/flash +
+  Library: Pydantic AI see research report: @docs/fase-1-analysis/research-technical-2025-10-31.md
 - **Payment Processing**: Stripe API for subscription management and payment processing
 - **Email Service**: Supabase Auth for authentication emails + SendGrid for custom transactional emails
 - **Real-time Communication**: Supabase Realtime for live booking monitoring and updates
@@ -525,6 +242,8 @@ If weather API data is unavailable, KiteOps uses cached forecasts or allows manu
 - **Build Tool**: UV for fast Python package management
 - **Deployment**: Vercel (FastAPI supports Vercel deployment)
 - **Weather API**: OpenWeatherMap API
+
+See report: @docs/fase-1-analysis/research-technical-2025-10-29.md
 
 ## Success Criteria
 
