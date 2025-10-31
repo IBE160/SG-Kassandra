@@ -159,7 +159,7 @@ The rule-based scheduling engine operates on a weighted decision model consideri
 
 If weather API data is unavailable, KiteOps uses cached forecasts or allows manual Manager override to maintain continuity.
 
-See scheduling logic brainstorming: @docs/brainstorming-session-results-scheduling-logic.md
+See scheduling logic brainstorming: @docs/fase-1-analysis/brainstorming-session-results-scheduling-logic.md
 
 - Must support GDPR-compliant data handling
 - Must use encryption for all user and payment data
@@ -169,8 +169,8 @@ See scheduling logic brainstorming: @docs/brainstorming-session-results-scheduli
 
 ## User Flows
 
-Detailed userflows: @docs/brainstorming-session-results-user-flows-detailed.md
-Communication: @docs/brainstorming-session-results-communication.md
+Detailed userflows: @docs/fase-1-analysis/brainstorming-session-results-user-flows-detailed.md
+Communication: @docs/fase-1-analysis/brainstorming-session-results-communication.md
 
 ### 1. Customer User Story Map (MVP - Guest Booking Only)
 
@@ -233,7 +233,7 @@ Communication: @docs/brainstorming-session-results-communication.md
 - **Authentication**: Supabase Auth for built-in user management, JWT tokens, and email verification
 - **Authorization**: Row Level Security (RLS) policies in Supabase + role-based middleware (Customer/Instructor/Manager roles)
 - **AI Integration**: Model: Gemini 2.5 pro/flash +
-  Library: Pydantic AI see research report: @docs/research-technical-2025-10-31.md
+  Library: Pydantic AI see research report: @docs/fase-1-analysis/research-technical-2025-10-31.md
 - **Payment Processing**: Stripe API for subscription management and payment processing
 - **Email Service**: Supabase Auth for authentication emails + SendGrid for custom transactional emails
 - **Real-time Communication**: Supabase Realtime for live booking monitoring and updates
@@ -243,7 +243,7 @@ Communication: @docs/brainstorming-session-results-communication.md
 - **Deployment**: Vercel (FastAPI supports Vercel deployment)
 - **Weather API**: OpenWeatherMap API
 
-See report: @docs/research-technical-2025-10-29.md
+See report: @docs/fase-1-analysis/research-technical-2025-10-29.md
 
 ## Success Criteria
 
